@@ -1,0 +1,28 @@
+{% extends 'base.html' %}
+
+{% block title %}
+Home
+{% endblock %}
+
+{% block navbar %}
+Home 🏡
+{% endblock %}
+
+{% block content %}
+{% if error %}
+<div class="container-fluid" style="width: 30rem;">
+  <div class="alert alert-danger alert-dismissible fade show" role="alert">
+    {{error}}
+    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+  </div>
+</div>
+{% endif %}
+<form method="post">
+  <input type="text" class="form-control" placeholder="Enter your name" name="name_input" value="{{name_input_value}}" autocomplete="off">
+  <div class="input-group my-2">
+    <input type="text" class="form-control" placeholder="Enter session code" name="code_input" value="{{code_input_value}}" autocomplete="off">
+    <button type="submit" class="btn btn-outline-success btn-sm" name="join_btn">Join Session</button>
+  </div>
+  <button type="submit" class="btn btn-outline-primary btn-sm" name="create_btn">Create Session</button>
+</form>
+{% endblock %}

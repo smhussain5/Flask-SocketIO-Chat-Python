@@ -1,0 +1,57 @@
+{% extends 'base.html' %}
+
+{% block title %}
+Room: {{room_session}}
+{% endblock %}
+
+{% block navbar %}
+Room 💬
+{% endblock %}
+
+{% block content %}
+<div class="container-fluid row px-0">
+    <div class="row text-center justify-content-around align-items-center mx-0 px-0">
+        <div class="col container-fluid d-flex justify-content-start px-0">
+            <a href="{{ url_for('home') }}" type="button" class="btn btn-outline-danger btn-sm rounded-start-2 rounded-end-0">✌ Let's Leave!</a>
+        </div>
+        <div class="col container-fluid d-flex justify-content-end px-0">
+            <span class="badge text-bg-primary fw-normal">Code: {{room_session}}</span>
+        </div>
+    </div>
+    <div class="row-8 container my-2 overflow-scroll" style="height: 65vh" id="message-div">
+
+    </div>
+    <div class="input-group input-group-sm my-2">
+        <input placeholder="What's new? 😄" type="text" class="form-control" id="message-input">
+        <button class="fw-semibold btn btn-outline-primary" type="submit" onClick="sendMessage()">Send Message</button>
+    </div>
+</div>
+<script type="text/javascript">
+    var socketio = io();
+
+    const messages = document.getElementById("message-div");
+
+    const createMessage = (name, msg) => {
+        const content = `
+        <div>
+          <p><span class="text-primary fw-semibold">${name}&nbsp;</span>${msg}</p>
+        </div>
+        `;
+        messages.innerHTML += content;
+    };
+
+    socketio.on("message", (data) => {
+        createMessage(data.name, data.message);
+    });
+
+    const sendMessage = () => {
+        var messageInput = document.getElementById("message-input");
+        if (messageInput.value === "") {
+            return;
+        } else {
+            socketio.emit("message", { data: messageInput.value });
+        }
+        messageInput.value = "";
+    };
+</script>
+{% endblock %}
