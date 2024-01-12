@@ -1,11 +1,11 @@
 {% extends 'base.html' %}
 
 {% block title %}
-Room: {{room_session}}
+Flasky Chat (Room: {{room_session}})
 {% endblock %}
 
 {% block navbar %}
-Room 💬
+Flasky Chat Room 💬
 {% endblock %}
 
 {% block content %}
@@ -18,7 +18,7 @@ Room 💬
             <span class="badge text-bg-primary fw-normal">Code: {{room_session}}</span>
         </div>
     </div>
-    <div class="row-8 container my-2 overflow-scroll" style="height: 65vh" id="message-div">
+    <div class="row-8 container my-2 overflow-scroll" style="height: 64vh" id="message-div">
 
     </div>
     <div class="input-group input-group-sm my-2">
