@@ -1,10 +1,11 @@
+import os
 import random
 from string import ascii_letters
 from flask import Flask, request, render_template, redirect, url_for, session
 from flask_socketio import SocketIO, join_room, leave_room, send
 
 app = Flask(__name__)
-app.config["SECRET_KEY"] = "super_secret_key"
+app.config["SECRET_KEY"] = os.environ.get("SECRET")
 socketio = SocketIO(app)
 
 
@@ -119,4 +120,4 @@ def message(data):
 
 
 if __name__ == "__main__":  # RUN SOCKETIO
-    socketio.run(app, debug=True)
+    app.run()
