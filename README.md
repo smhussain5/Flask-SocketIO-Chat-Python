@@ -4,7 +4,7 @@
 
 ## Problem 🤔
 
-Real-time communication is a neccessity in a globally connected world. Such can be achieved via Flask, Python, and WebSockets.
+Real-time communication is a necessity in a globally connected world. Such can be achieved via Flask, Python, and WebSockets.
 
 ## Solution 💡
 
