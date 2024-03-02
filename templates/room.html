@@ -30,6 +30,7 @@ Flasky Chat Room 💬
     var socketio = io();
 
     const messages = document.getElementById("message-div");
+    const messageInput = document.getElementById("message-input");
 
     const createMessage = (name, msg) => {
         const content = `
@@ -39,6 +40,7 @@ Flasky Chat Room 💬
         `;
         messages.innerHTML += content;
         messages.scrollTo(0, messages.scrollHeight);
+        messageInput.autofocus;
     };
 
     socketio.on("message", (data) => {
@@ -46,7 +48,6 @@ Flasky Chat Room 💬
     });
 
     const sendMessage = () => {
-        var messageInput = document.getElementById("message-input");
         if (messageInput.value === "") {
             return;
         } else {
