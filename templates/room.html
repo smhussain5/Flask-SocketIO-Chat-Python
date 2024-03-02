@@ -21,7 +21,7 @@ Flasky Chat Room 💬
     <div class="row-8 container my-2" style="height: 64vh; overflow: auto; scroll-behavior: smooth;" id="message-div">
 
     </div>
-    <div class="input-group input-group-sm my-2" onsubmit="sendMessage()">
+    <div class="input-group input-group-sm my-2">
         <input placeholder="What's new? 😄" type="text" class="form-control" id="message-input">
         <button class="fw-semibold btn btn-outline-primary" type="submit" onclick="sendMessage()">Send Message</button>
     </div>
@@ -31,6 +31,12 @@ Flasky Chat Room 💬
 
     const messages = document.getElementById("message-div");
     const messageInput = document.getElementById("message-input");
+
+    messageInput.addEventListener("keypress", (e) => {
+        if (e.code === "Enter") {
+            sendMessage()
+        }
+    });
 
     const createMessage = (name, msg) => {
         const content = `
