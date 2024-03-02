@@ -22,8 +22,10 @@ Flasky Chat Room 💬
 
     </div>
     <div class="input-group input-group-sm my-2">
-        <input placeholder="What's new? 😄" type="text" class="form-control" id="message-input">
-        <button class="fw-semibold btn btn-outline-primary" type="submit" onClick="sendMessage()">Send Message</button>
+        <form onSubmit="sendMessage()">
+            <input placeholder="What's new? 😄" type="text" class="form-control" id="message-input">
+            <button class="fw-semibold btn btn-outline-primary" type="submit" onClick="sendMessage()">Send Message</button>
+        </form>
     </div>
 </div>
 <script type="text/javascript">
